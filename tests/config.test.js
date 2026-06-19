@@ -85,4 +85,22 @@ describe('Vite Plugin Config Resolution', () => {
             'resources/js/components/Alert.js'
         ]);
     });
+
+    it('automatically sets preserveEntrySignatures to strict to prevent export stripping', () => {
+        fg.sync.mockReturnValue(['resources/js/components/Alert.js']);
+
+        const plugin = laravelBladeJavascriptPlugin();
+
+        const mockConfig = {
+            build: {
+                rollupOptions: {
+                    input: ['resources/js/app.js']
+                }
+            }
+        };
+
+        plugin.configResolved(mockConfig);
+
+        expect(mockConfig.build.rollupOptions.preserveEntrySignatures).toBe('strict');
+    });
 });

@@ -19,6 +19,7 @@ export default function vitePluginBladeScript(options = {}) {
             }
 
             config.build.rollupOptions.input = [...new Set([...input, ...jsFiles])];
+            config.build.rollupOptions.preserveEntrySignatures = 'strict';
         },
         resolveId(source) {
             if (source.startsWith('@/')) {
