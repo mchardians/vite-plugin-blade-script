@@ -1,8 +1,8 @@
-# vite-plugin-blade-script
+# vite-plugin-bladescript
 
-[![npm version](https://img.shields.io/npm/v/vite-plugin-blade-script.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-blade-script)
-[![npm downloads](https://img.shields.io/npm/dm/vite-plugin-blade-script.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-blade-script)
-[![License](https://img.shields.io/npm/l/vite-plugin-blade-script.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-blade-script)
+[![npm version](https://img.shields.io/npm/v/vite-plugin-laravel-bladescript.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-laravel-bladescript)
+[![npm downloads](https://img.shields.io/npm/dm/vite-plugin-laravel-bladescript.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-laravel-bladescript)
+[![License](https://img.shields.io/npm/l/vite-plugin-laravel-bladescript.svg?style=flat-square)](https://www.npmjs.com/package/vite-plugin-laravel-bladescript)
 
 A Vite plugin companion for the Laravel `bladescript` package. It enables a high-performance monolith architecture by automatically discovering and registering your Vanilla JavaScript, TypeScript, or CSS files as independent Rollup entry points (Micro-Bundling).
 
@@ -25,7 +25,7 @@ Install the package via npm as a development dependency:
 
 ```bash
 
-npm install vite-plugin-blade-script --save-dev
+npm install vite-plugin-bladescript --save-dev
 
 ```
 
@@ -41,7 +41,7 @@ By default, the plugin uses the pattern resources/js//*.js to find all your Java
 
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import laravelBladeJs from 'vite-plugin-blade-script';
+import { vitePluginLaravelBladeScript } from 'vite-plugin-bladescript';
 
 export default defineConfig({
     resolve: {
@@ -57,7 +57,7 @@ export default defineConfig({
             input: ['resources/css/app.css'],
             refresh: true,
         }),
-        laravelBladeJs(), // Automatically discovers resources/js/**/*.js
+        vitePluginLaravelBladeScript(), // Automatically discovers resources/js/**/*.js
     ],
 });
 
@@ -71,7 +71,7 @@ You can customize the discovery pattern using the entryPoints option. It accepts
 
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import laravelBladeJs from 'vite-plugin-blade-script';
+import { vitePluginLaravelBladeScript } from 'vite-plugin-bladescript';
 
 export default defineConfig({
     plugins: [
@@ -79,7 +79,7 @@ export default defineConfig({
             input: ['resources/css/app.css'],
             refresh: true,
         }),
-        laravelBladeJs({
+        vitePluginLaravelBladeScript({
             // Pass an array of glob patterns to discover multiple asset types
             entryPoints: [
                 'frontend/scripts/**/*.js',
